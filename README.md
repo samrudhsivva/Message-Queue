@@ -2,28 +2,6 @@
 
 # 📨 RabbitMQ Driver Verification - CMPE 273 Assignment
 
-## 📌 Objective
-
-Develop a message queue system using RabbitMQ to **send and receive 10,000 messages** between a Producer and Consumer, ensuring **no message loss** in transit.
-
-## ⚙️ Prerequisites
-
-- Python 3.x installed  
-- Install `pika` Python library:
-  ```bash
-  python3 -m pip install pika
-Docker installed and running
-VS Code with the correct Python interpreter selected
-🐇 Set Up RabbitMQ (via Docker)
-
-Start RabbitMQ server locally:
-
-docker run -d --hostname my-rabbit --name some-rabbit \
-  -p 5672:5672 -p 15672:15672 rabbitmq:3-management
-🔗 Access the RabbitMQ Management UI: http://localhost:15672
-👤 Username: guest
-🔑 Password: guest
-
 🚀 How to Run
 
 1️⃣ Start the Consumer (in one terminal):
