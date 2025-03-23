@@ -1,14 +1,14 @@
-# RabbitMQ Driver Verification - CMPE 273 Assignment
+# 📨 RabbitMQ Driver Verification - CMPE 273 Assignment
 
 ## 📌 Objective
 
-Verify that no messages are lost in a message queue system using RabbitMQ by sending and receiving 10,000 messages between a Producer and Consumer.
+Develop a message queue system using RabbitMQ to **send and receive 10,000 messages** between a Producer and Consumer, ensuring **no message loss** in transit.
 
 ---
 
-## 📁 Folder Structure
+## 🗂️ Folder Structure
 
-rabbitmq-driver-test/ │ ├── producer/ │ └── cmpe273send.py │ ├── consumer/ │ └── cmpe273receive.py │ ├── screenshots/ │ ├── sent.png │ └── received.png │ └── README.md
+rabbitmq-driver-test/ ├── producer/ │ └── cmpe273send.py ├── consumer/ │ └── cmpe273receive.py ├── screenshots/ │ ├── sent.png # Screenshot of producer sending messages │ ├── received.png # Screenshot of consumer receiving messages │ └── rabbitmq_queue.png # Screenshot of RabbitMQ queue status └── README.md
 
 
 ---
@@ -16,48 +16,61 @@ rabbitmq-driver-test/ │ ├── producer/ │ └── cmpe273send.py │ �
 ## ⚙️ Prerequisites
 
 - Python 3.x installed
-- `pika` library installed:
+- Install `pika` library:
   ```bash
   python3 -m pip install pika
 Docker installed and running
-VS Code with Python interpreter set correctly
-🐇 Start RabbitMQ using Docker
+VS Code with correct Python interpreter selected
+🐇 Set Up RabbitMQ (via Docker)
+
+Start RabbitMQ server locally:
 
 docker run -d --hostname my-rabbit --name some-rabbit \
--p 5672:5672 -p 15672:15672 rabbitmq:3-management
-Access RabbitMQ dashboard at: http://localhost:15672
-Login: guest / guest
+  -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+🔗 RabbitMQ Management UI: http://localhost:15672
+👤 Username: guest
+🔑 Password: guest
+
 🚀 How to Run
 
-Step 1: Start Consumer (in one terminal)
+1️⃣ Start the Consumer (in one terminal):
 cd consumer
 python3 cmpe273receive.py
-Step 2: Start Producer (in another terminal)
+2️⃣ Start the Producer (in another terminal):
 cd producer
 python3 cmpe273send.py
 ✅ Expected Output
 
-In consumer terminal:
-
+🖥️ Consumer Terminal
 ✅ Received 1000 messages...
 ✅ Received 2000 messages...
 ...
 🎉 All 10000 messages received successfully!
-In producer terminal:
-
+🖥️ Producer Terminal
 ✅ Sent 10,000 messages.
-📸 Screenshots
+...
 
 ## 📸 Screenshots
 
-### ✅ Messages Sent (Producer)
+### ✅ Messages Sent from Producer
 ![Sent Messages](screenshots/Sent.png)
 
-### 📥 Messages Received (Consumer)
+### 📥 Messages Received by Consumer
 ![Received Messages](screenshots/Received.png)
 
-📊 Test Result
+### 📊 RabbitMQ Queue Dashboard
+![RabbitMQ Queue Dashboard](screenshots/rabbit_mq.png)
 
-Total messages sent: 10,000
-Total messages received: 10,000
-✅ No messages lost
+x
+📊 Test Results
+
+Metric	Count
+Messages Sent	10,000
+Messages Received	10,000
+Messages Lost	0
+Message Loss Rate	0.00%
+✅ Message queue is working reliably with RabbitMQ and pika.
+
+🧠 Conclusion
+
+This setup demonstrates how to implement and test a reliable asynchronous messaging system using RabbitMQ in Python. It verifies that message delivery is complete, even at high volume, with zero data loss.
